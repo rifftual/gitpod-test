@@ -22,22 +22,22 @@ export default function App() {
         }
     });
 
-    console.log('render');
-
     return (
         <PaperProvider>
             <View style={styles.container}>
                 <Appbar style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
                     <Appbar.Action icon="archive" />
                 </Appbar>
-                <View style={{ flex: 1 }}>
+                <View>
                     <Text>Paina mulq kuutioo!</Text>
                 </View>
                 <GLView
                     style={{ width: 500, height: 500 }}
                     onClick={() => {
+                        console.log('click');
                         if (animTimeout) {
                             cancelAnimationFrame(animTimeout);
+                            setAnimTimeout();
                         } else {
                             animate();
                         }
@@ -66,15 +66,14 @@ export default function App() {
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const _cube = new THREE.Mesh(geometry, material);
 
-        _scene.add(cube);
+        _scene.add(_cube);
         _camera.position.z = 5;
+        _renderer.render(_scene, _camera);
 
         setRenderer(_renderer);
         setCamera(_camera);
         setScene(_scene);
         setCube(_cube);
-
-        animate();
     }
 }
 
