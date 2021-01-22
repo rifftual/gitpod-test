@@ -62,7 +62,7 @@ export default function App() {
         const _scene = new THREE.Scene();
         const _camera = new THREE.PerspectiveCamera(75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
         const _renderer = new Renderer({ gl });
-        const geometry = new THREE.BoxGeometry();
+        const geometry = new THREE.SphereBufferGeometry();
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const _cube = new THREE.Mesh(geometry, material);
 
